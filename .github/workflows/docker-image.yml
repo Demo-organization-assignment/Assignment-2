@@ -13,7 +13,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image and Push to dockerhub
-      run: docker build -t travi0764/flaskapp:latest -f Dockerfile .
-           | echo "${{ secrets.DOCKERPSWD }}" | docker login -u "travi0764" --password-stdin docker.io
-           docker push travi0764/flaskApp:latest
+      run: |
+        echo "${{ secrets.DOCKERPSWD }}" | docker login -u "travi0764" --password-stdin
+        docker image build -t travi0764/flaskapp:latest .
+        docker push dab8106/flaskapp:latest
       
