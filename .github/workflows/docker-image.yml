@@ -1,0 +1,19 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image and Push to dockerhub
+      run: docker build -t travi0764/flaskApp:latest -f Dockerfile .
+           | echo "${{ secrets.DOCKERPSWD }}" | docker login -u travi0764 --password.stdin
+           docker push travi0764/flaskApp:latest
+      
