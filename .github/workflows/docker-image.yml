@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v1
     - name: Build the Docker image and Push to dockerhub
-      run: docker build -t travi0764/flaskApp:latest -f Dockerfile .
-           | echo "${{ secrets.DOCKERPSWD }}" | docker login -u travi0764 --password.stdin
-           docker push travi0764/flaskApp:latest
+      run: docker build -t travi0764/flaskApp:v1 -f Dockerfile .
+           | echo "${{ secrets.DOCKERPSWD }}" | docker login -u travi0764 --password.stdin docker.io
+           docker push travi0764/flaskApp:v1
       
