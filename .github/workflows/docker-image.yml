@@ -16,5 +16,5 @@ jobs:
       run: |
         echo "${{ secrets.DOCKERPSWD }}" | docker login -u "travi0764" --password-stdin
         docker image build -t travi0764/flaskapp:latest .
-        docker push dab8106/flaskapp:latest
+        docker push travi0764/flaskapp:latest
       
